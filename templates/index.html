@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Libreria</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Librería</h1>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in lista_libros %}
+            <tr>
+                <td>{{ libro['ID'] }}</td>
+                <td>{{ libro['nombre'] }}</td>
+                <td>${{ libro['precio'] }}</td>
+                <td>{{ libro['stock'] }} unidades</td>
+                <td>
+                    <div class="action-links">
+                        <a class="btn btn-edit" href="/editar/{{ libro['ID'] }}">Editar</a>
+                        <a class="btn btn-delete" href="/eliminar/{{ libro['ID'] }}">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/agregar">Añadir libros</a>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Restaurar la preferencia del usuario
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</body>
+</html>

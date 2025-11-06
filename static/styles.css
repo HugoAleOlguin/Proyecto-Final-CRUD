@@ -1,0 +1,181 @@
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #333;
+  --heading-color: #2c3e50;
+  --table-bg: white;
+  --table-border: #eee;
+  --hover-bg: #f8f9fa;
+  --primary-color: #6c5ce7;
+  --primary-hover: #5b4cc4;
+
+  /* botones de acción */
+  --edit-color: #28a745;
+  --edit-hover: #218838;
+  --delete-color: #dc3545;
+  --delete-hover: #c82333;
+
+  /* formularios (claro) */
+  --input-bg: #ffffff;
+  --input-border: #ddd;
+  --input-text: #222;
+}
+
+[data-theme="dark"] {
+  --bg-color: #101114;
+  --text-color: #e6e6e6;
+  --heading-color: #ffffff;
+  --table-bg: #1d1f22;
+  --table-border: #2f3336;
+  --hover-bg: #17191b;
+  --primary-color: #8677ed;
+  --primary-hover: #755ff0;
+
+  --edit-color: #2ecc71;
+  --edit-hover: #27ae60;
+  --delete-color: #ff6b6b;
+  --delete-hover: #ff4c4c;
+
+  --input-bg: #121316;
+  --input-border: #2a2d30;
+  --input-text: #e6e6e6;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  margin: 40px auto;
+  max-width: 1200px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+h1 {
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: var(--table-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--table-border);
+}
+th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+}
+tr:hover {
+  background-color: var(--hover-bg);
+}
+form {
+  max-width: 500px;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: var(--table-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+div {
+  margin-bottom: 1.2rem;
+}
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--input-bg);
+  border: 2px solid var(--input-border);
+  color: var(--input-text);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+  color: rgba(0,0,0,0.35);
+}
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+button, a[href="/agregar"] {
+  background-color: var(--primary-color);
+  padding: 0.8rem 1.5rem;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+button:hover, a[href="/agregar"]:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Botón de modo oscuro */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* Botones de acción en la tabla */
+.action-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+a.btn {
+  display: inline-block;
+  padding: 0.4rem 0.7rem;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+a.btn-edit {
+  background-color: var(--edit-color);
+}
+a.btn-edit:hover {
+  background-color: var(--edit-hover);
+}
+a.btn-delete {
+  background-color: var(--delete-color);
+}
+a.btn-delete:hover {
+  background-color: var(--delete-hover);
+}
+
+/* pequeños ajustes responsivos */
+@media (max-width: 600px) {
+  body { margin: 20px; }
+  th, td { padding: 0.7rem; font-size: 0.95rem; }
+  .theme-toggle { top: 14px; right: 14px; width: 36px; height: 36px; }
+}
